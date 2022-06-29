@@ -110,8 +110,8 @@ class DisplayManager {
   ///
   /// return [Future<bool>] about the status has been display or not
   Future<bool?>? showSecondaryDisplay(
-      {required int displayId, required String routerName}) {
-    return _displayMethodChannel?.invokeMethod<bool?>(
+      {required int displayId, required String routerName}) async {
+    return await _displayMethodChannel?.invokeMethod<bool?>(
         _showPresentation,
         "{"
         "\"displayId\": $displayId,"
@@ -171,8 +171,8 @@ class DisplayManager {
   /// </p>
   ///
   /// return [Future<bool>] the value to determine whether or not the data has been transferred successfully
-  Future<bool?>? transferDataToPresentation(dynamic arguments) {
-    return _displayMethodChannel?.invokeMethod<bool?>(
+  Future<bool?>? transferDataToPresentation(dynamic arguments) async {
+    return await _displayMethodChannel?.invokeMethod<bool?>(
         _transferDataToPresentation, arguments);
   }
 }
